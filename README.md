@@ -18,6 +18,7 @@
 
 ### backend
 
+- python@3.9
 - **Django-Restful-Framework** (Python)
 - **Django** (Python)
 - Authentication : **JWT**

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useAppContext } from "context-store";
+import { useAppContext } from "stores/jwt-store";
 
 const LoginRequiredRoute = ({ component: Component, ...kwargs }) => {
   const {

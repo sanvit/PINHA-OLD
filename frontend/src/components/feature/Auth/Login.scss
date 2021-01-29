@@ -1,0 +1,66 @@
+.login-form {
+  position: relative;
+  min-width: 24rem;
+  min-height: 10rem;
+  width: 30%;
+  height: 30%;
+  flex: 0 0 auto;
+  border: 0.05rem solid #4daad1;
+}
+
+.login-title {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  color: #4daad1;
+}
+
+.login-input {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  width: 80%;
+  height: 2rem;
+  padding: 0 0.5rem;
+  outline: none;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 0.05rem;
+  border-style: solid;
+  border-color: lightgray;
+  &:focus {
+    border-color: #4daad1;
+  }
+}
+
+.login-button {
+  position: absolute;
+  bottom: 15%;
+  right: 6%;
+  width: 3.5rem;
+  height: 2rem;
+  padding: 0;
+  color: #4daad1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 100;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-form {
+    min-height: 16rem;
+    min-width: 18rem;
+    height: 35%;
+    width: 70%;
+  }
+
+  .login-input {
+    top: 50%;
+  }
+}

@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Login from "components/feature/Auth/Login";
 import Register from "components/feature/Auth/Register";
 
-const Button = styled.button`
-  font-size: 50px;
+const AuthPage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
 `;
 
 const Auth = () => {
-  const [isLoginView, setIsLoginView] = useState(true);
+  const history = useHistory();
+  const {
+    location: {
+      state: { view },
+    },
+  } = history;
+  const [isLoginView, setIsLoginView] = useState(view === "login");
 
-  const handleClick = () => {
-    setIsLoginView((prevState) => !prevState);
-  };
+  useEffect(() => {
+    setIsLoginView(view === "login");
+  }, [view]);
 
-  return (
-    <>
-      {isLoginView ? <Login /> : <Register />}
-      <Button onClick={handleClick}>
-        {isLoginView ? "회원가입하기" : "로그인하기"}
-      </Button>
-    </>
-  );
+  return <AuthPage>{isLoginView ? <Login /> : <Register />}</AuthPage>;
 };
 
 export default Auth;

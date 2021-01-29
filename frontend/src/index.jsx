@@ -8,6 +8,8 @@ ReactDOM.render(
   <React.StrictMode>
     <RenderAfterNavermapsLoaded
       ncpClientId={process.env.REACT_APP_NCP_CLIENT_ID}
+      error={<p>Maps Load Error</p>}
+      loading={<p>Maps Loading...</p>}
     >
       <App />
     </RenderAfterNavermapsLoaded>

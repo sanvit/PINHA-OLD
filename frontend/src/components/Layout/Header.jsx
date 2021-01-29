@@ -12,11 +12,12 @@ const Header = () => {
     state: { isAuthenticated },
   } = useAppContext();
 
-  const goToPage = (e, path) => {
+  const goToPage = (event, path) => {
     history.push({
       pathname: `${path}`,
-      state: { view: e.target.name },
+      state: { view: event.target.name },
     });
+
     setIsMainView(false);
   };
 
@@ -25,8 +26,8 @@ const Header = () => {
     setIsMainView(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
 
   return (

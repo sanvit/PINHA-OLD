@@ -1,12 +1,12 @@
 from django.conf import settings
-from django.conf.urls import static
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("users/", include("users.urls")),
-    # path("api/", include("pinha.urls")),
+    path("api/v1/users/", include("users.urls")),
+    path("api/v1/pinha/", include("pinha.urls")),
 ]
 
 

@@ -14,10 +14,10 @@ def image_path(instance, filename):
 class PhoneAuth(models.Model):
     number = models.CharField(max_length=11, null=False, blank=False, unique=True)
     code = models.CharField(max_length=6, null=False, blank=False, unique=False)
-    sentTime = models.DateTimeField(default=timezone.now)
+    sent_time = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
-        self.sentTime = timezone.now()
+        self.sent_time = timezone.now()
 
     def __str__(self):
         return self.number
@@ -82,14 +82,22 @@ class Review(models.Model):
         return f"{self.store.name} {self.title}"
 
 
-class LikedReviews(models.Model):
-    review = models.OneToOneField(Review, on_delete=models.CASCADE, related_name='liked', null=False, unique=True)
-    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='user')
+# class LikedReviews(models.Model):
+#     review = models.OneToOneField(
+#         Review, on_delete=models.CASCADE, related_name="liked", null=False, unique=True
+#     )
+#     user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="user")
 
 
-class DislikedReviews(models.Model):
-    review = models.OneToOneField(Review, on_delete=models.CASCADE, related_name='disliked', null=False, unique=True)
-    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='user')
+# class DislikedReviews(models.Model):
+#     review = models.OneToOneField(
+#         Review,
+#         on_delete=models.CASCADE,
+#         related_name="disliked",
+#         null=False,
+#         unique=True,
+#     )
+#     user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="user")
 
 
 class Menu(models.Model):
@@ -112,13 +120,22 @@ class Photo(models.Model):
     def __str__(self):
         return f"{self.store.name} {self.store.primary_key}"
 
-class  UnderReview(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.SET_NULL)
+
+class UnderReview(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL
+    )
     name = models.CharField(max_length=100, null=False, blank=False)
     phone = models.CharField(max_length=15, null=True, blank=True)
     time = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True
+    )
     address = models.CharField(max_length=100, null=False, blank=False)
     kakao_id = models.CharField(max_length=50, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True
+    )
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True
+    )

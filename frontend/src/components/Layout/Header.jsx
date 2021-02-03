@@ -6,7 +6,11 @@ import { useHistory } from "react-router-dom";
 const Header = () => {
   const history = useHistory();
 
-  const [isMainView, setIsMainView] = useState(true);
+  const {
+    location: { state },
+  } = history;
+
+  const [isMainView, setIsMainView] = useState(state === undefined);
 
   const {
     state: { isAuthenticated },
@@ -17,13 +21,10 @@ const Header = () => {
       pathname: `${path}`,
       state: { view: event.target.name },
     });
-
-    setIsMainView(false);
   };
 
   const goToHome = () => {
     history.push("/");
-    setIsMainView(true);
   };
 
   const handleSubmit = (event) => {

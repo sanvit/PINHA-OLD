@@ -9,8 +9,11 @@ const AuthPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 7rem);
   overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Auth = () => {

@@ -7,7 +7,8 @@ const Login = () => {
   return (
     <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
       <span className="login-title">LogIn</span>
-      <input type="tel" className="login-input" required />
+      <button></button>
+      <input type="number" className="login-input" required />
       <button type="submit" className="login-button">
         OKAY
       </button>

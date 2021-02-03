@@ -12,7 +12,7 @@ const Register = () => {
     <form className="register-form" onSubmit={(e) => handleSubmit(e)}>
       <span className="register-title">SignIn</span>
       <input
-        type="tel"
+        type="number"
         className="register-input tel"
         placeholder="전화번호를 입력하세요."
         required

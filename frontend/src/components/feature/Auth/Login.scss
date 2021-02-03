@@ -1,11 +1,13 @@
 .login-form {
   position: relative;
+  background-color: white;
+  z-index: 1;
   min-width: 24rem;
-  min-height: 10rem;
+  min-height: 12rem;
   width: 30%;
   height: 30%;
   flex: 0 0 auto;
-  border: 0.05rem solid #4daad1;
+  border-radius: 12px;
 }
 
 .login-title {

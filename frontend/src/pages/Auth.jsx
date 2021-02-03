@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import Login from "components/feature/Auth/Login";
-import Register from "components/feature/Auth/Register";
 import Layout from "components/Layout";
+import styled from "styled-components";
 
 const AuthPage = styled.div`
   display: flex;
@@ -29,11 +27,7 @@ const Auth = () => {
     setIsLoginView(view === "login");
   }, [view]);
 
-  return (
-    <Layout>
-      <AuthPage>{isLoginView ? <Login /> : <Register />}</AuthPage>
-    </Layout>
-  );
+  return <Layout></Layout>;
 };
 
 export default Auth;

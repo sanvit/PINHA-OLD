@@ -14,6 +14,7 @@
 
 - <b>React</b> (Javascript)
 - <b>styled-component</b>
+- <b>SCSS</b>
 - <b>ant-design</b>
 
 ### backend
@@ -40,7 +41,8 @@
 
 ### Third Party API
 
-- 지도 기능 : Kakao API
+- 지도 마켓 가져오기 기능 : Kakao API
+- 지도 API : Naver API
 
 ### 도메인
 

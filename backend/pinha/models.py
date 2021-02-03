@@ -1,13 +1,11 @@
+import uuid
 from django.db import models
 from django.conf import settings
-import uuid
 from django.utils import timezone
-
-# Create your models here.
 
 
 def image_path(instance, filename):
-    ext = filename.split('.')[-1]
+    ext = filename.split(".")[-1]
     id = str(uuid.uuid4())
     filename = f"{id[:2]}/{id[2:]}.{ext}"
     return f"images/{filename}"
@@ -37,11 +35,17 @@ class Store(models.Model):
     name = models.CharField(max_length=30, null=False, blank=False)
     phone = models.CharField(max_length=15, null=True, blank=True)
     time = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True
+    )
     address = models.CharField(max_length=100, null=False, blank=False)
     kakao_id = models.CharField(max_length=50, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True
+    )
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True
+    )
     stars = models.DecimalField(max_digits=3, decimal_places=2, null=False, blank=False)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     createdAt = models.DateTimeField(auto_now_add=True)
@@ -52,9 +56,11 @@ class Store(models.Model):
 
 
 class Review(models.Model):
-    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name='reviews')
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="reviews")
     title = models.CharField(max_length=100, null=True, blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+    )
     contents = models.TextField()
     stars = models.PositiveSmallIntegerField(null=False, blank=False)
     is_public = models.BooleanField(default=True, null=False, blank=False)

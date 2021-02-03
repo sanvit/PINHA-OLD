@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -6,7 +7,6 @@ from django.contrib.auth.models import (
 )
 from django.conf import settings
 from pinha.models import Store, image_path
-import uuid
 
 
 class UserManager(BaseUserManager):
@@ -67,7 +67,10 @@ class Badge(models.Model):
 
 class FavList(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="favlist", null=False
+        User,
+        on_delete=models.CASCADE,
+        related_name="favlist",
+        null=False,
     )
     store = models.ManyToManyField(Store)
     caption = models.CharField(max_length=100, null=True, blank=True)

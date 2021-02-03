@@ -1,6 +1,5 @@
 import React from "react";
 import { NaverMap } from "react-naver-maps";
-import Test from "components/feature/Home/Test";
 import Layout from "components/Layout";
 
 const Home = () => {

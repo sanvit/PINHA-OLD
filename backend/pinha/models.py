@@ -105,3 +105,14 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"{self.store.name} {self.store.primary_key}"
+
+class  UnderReview(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    time = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.CharField(max_length=100, null=False, blank=False)
+    kakao_id = models.CharField(max_length=50, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)

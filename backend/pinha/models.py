@@ -76,6 +76,16 @@ class Review(models.Model):
         return f"{self.store.name} {self.title}"
 
 
+class LikedReviews(models.Model):
+    review = models.OneToOneField(Review, on_delete=models.CASCADE, related_name='liked', null=False, unique=True)
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='user')
+
+
+class DislikedReviews(models.Model):
+    review = models.OneToOneField(Review, on_delete=models.CASCADE, related_name='disliked', null=False, unique=True)
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='user')
+
+
 class Menu(models.Model):
     image = models.ImageField(upload_to=image_path, null=False, blank=False)
     page = models.PositiveSmallIntegerField(default=1, null=False, blank=False)

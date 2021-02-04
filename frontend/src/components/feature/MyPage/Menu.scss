@@ -1,0 +1,26 @@
+.menu {
+  height: 35%;
+  background-color: rgb(223, 180, 102);
+  border-radius: 36px 36px 0 0;
+}
+
+.menu-option {
+  text-align: center;
+  height: 33.3%;
+  &:not(:last-child) {
+    .menu-button {
+      border-bottom: 0.05rem solid white;
+    }
+  }
+}
+
+.menu-button {
+  width: 70%;
+  height: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+  font-size: 0.8rem;
+}

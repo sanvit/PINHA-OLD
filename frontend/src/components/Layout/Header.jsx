@@ -28,17 +28,15 @@ const Header = () => {
   } = history;
 
   const [isMainView, setIsMainView] = useState(state === undefined);
-  const [login, setLogin] = useState(null);
-  const [register, setRegister] = useState(null);
+  const [loginPage, setLoginPage] = useState(null);
+  const [registerPage, setRegisterPage] = useState(null);
 
   const showPage = (e) => {
     const name = e.target.name;
     if (name === "login") {
-      setLogin(true);
-      setRegister(false);
+      setLoginPage(true);
     } else {
-      setRegister(true);
-      setLogin(false);
+      setRegisterPage(true);
     }
   };
 
@@ -48,8 +46,13 @@ const Header = () => {
 
   const goToHome = () => {
     history.push("/");
-    setRegister(false);
-    setLogin(false);
+  };
+
+  const goToMyPage = () => {
+    history.push({
+      pathname: "MyPage",
+      state: "mypage",
+    });
   };
 
   const handleSubmit = (event) => {
@@ -72,14 +75,14 @@ const Header = () => {
           <>
             <button
               name="login"
-              className="header-button login"
+              className="header-button loginBtn"
               onClick={(e) => showPage(e)}
             >
               로그인
             </button>
             <button
               name="register"
-              className="header-button register"
+              className="header-button registerBtn"
               onClick={(e) => showPage(e)}
             >
               회원가입
@@ -87,21 +90,25 @@ const Header = () => {
           </>
         ) : (
           <>
-            <button name="mypage" className="header-button mypage">
+            <button
+              name="mypage"
+              className="header-button mypageBtn"
+              onClick={goToMyPage}
+            >
               마이페이지
             </button>
-            <button className="header-button logout">로그아웃</button>
+            <button className="header-button logoutBtn">로그아웃</button>
           </>
         )}
       </div>
-      {login && (
+      {loginPage && (
         <AuthPage>
-          <Login />
+          <Login setLoginPage={setLoginPage} />
         </AuthPage>
       )}
-      {register && (
+      {registerPage && (
         <AuthPage>
-          <Register />
+          <Register setRegisterPage={setRegisterPage} />
         </AuthPage>
       )}
     </div>

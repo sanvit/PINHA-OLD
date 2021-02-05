@@ -1,0 +1,17 @@
+.profile {
+  height: 65%;
+  padding: 0 1rem;
+}
+
+.profile-image {
+  background-image: url();
+  height: 0;
+  padding-bottom: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  & img {
+    display: none;
+  }
+}

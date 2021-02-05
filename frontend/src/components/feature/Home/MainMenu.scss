@@ -1,0 +1,22 @@
+.mainmenu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.mainmenu-categories {
+  width: 30%;
+  height: 100%;
+  background-color: #f6f6f6;
+}
+
+.mainmenu-categorory {
+  width: 100%;
+  height: 10%;
+}
+
+.mainmenu-searchedItems {
+  width: 70%;
+  height: 100%;
+  background-color: white;
+}

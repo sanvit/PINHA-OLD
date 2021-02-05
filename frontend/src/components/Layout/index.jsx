@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./Header";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 
 const Container = styled.div`
   /* display: grid;
@@ -27,7 +27,7 @@ const Layout = ({ children, thirdPartyComponent = null }) => {
       <Header />
       <Contents>{children}</Contents>
       {/* <Sidebar thirdPartyComponent={thirdPartyComponent} /> */}
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 };

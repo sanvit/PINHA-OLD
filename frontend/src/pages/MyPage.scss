@@ -1,0 +1,16 @@
+.mypage {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  margin: 0;
+}
+
+.mypage-sidebar {
+  width: 16%;
+  min-width: 12rem;
+}
+
+.mypage-content {
+  width: 84%;
+  padding: 2rem;
+}

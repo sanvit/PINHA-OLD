@@ -2,6 +2,23 @@ import React, { useState } from "react";
 import "components/Layout/Header.scss";
 import { useAppContext } from "stores/jwt-store";
 import { useHistory } from "react-router-dom";
+import Login from "components/feature/Auth/Login";
+import Register from "components/feature/Auth/Register";
+import styled from "styled-components";
+
+const AuthPage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: hidden;
+`;
 
 const Header = () => {
   const history = useHistory();
@@ -11,20 +28,31 @@ const Header = () => {
   } = history;
 
   const [isMainView, setIsMainView] = useState(state === undefined);
+  const [loginPage, setLoginPage] = useState(null);
+  const [registerPage, setRegisterPage] = useState(null);
+
+  const showPage = (e) => {
+    const name = e.target.name;
+    if (name === "login") {
+      setLoginPage(true);
+    } else {
+      setRegisterPage(true);
+    }
+  };
 
   const {
     state: { isAuthenticated },
   } = useAppContext();
 
-  const goToPage = (event, path) => {
-    history.push({
-      pathname: `${path}`,
-      state: { view: event.target.name },
-    });
-  };
-
   const goToHome = () => {
     history.push("/");
+  };
+
+  const goToMyPage = () => {
+    history.push({
+      pathname: "MyPage",
+      state: "mypage",
+    });
   };
 
   const handleSubmit = (event) => {
@@ -47,15 +75,15 @@ const Header = () => {
           <>
             <button
               name="login"
-              className="header-button login"
-              onClick={(e) => goToPage(e, "Auth")}
+              className="header-button loginBtn"
+              onClick={(e) => showPage(e)}
             >
               로그인
             </button>
             <button
               name="register"
-              className="header-button register"
-              onClick={(e) => goToPage(e, "Auth")}
+              className="header-button registerBtn"
+              onClick={(e) => showPage(e)}
             >
               회원가입
             </button>
@@ -64,15 +92,25 @@ const Header = () => {
           <>
             <button
               name="mypage"
-              className="header-button mypage"
-              onClick={(e) => goToPage(e, "MyPage")}
+              className="header-button mypageBtn"
+              onClick={goToMyPage}
             >
               마이페이지
             </button>
-            <button className="header-button logout">로그아웃</button>
+            <button className="header-button logoutBtn">로그아웃</button>
           </>
         )}
       </div>
+      {loginPage && (
+        <AuthPage>
+          <Login setLoginPage={setLoginPage} />
+        </AuthPage>
+      )}
+      {registerPage && (
+        <AuthPage>
+          <Register setRegisterPage={setRegisterPage} />
+        </AuthPage>
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import "components/feature/Auth/Register.scss";
 
-const Register = () => {
+const Register = ({ setRegisterPage }) => {
   const checkValidation = (e) => {
     e.preventDefault();
   };
@@ -10,37 +10,57 @@ const Register = () => {
   };
   return (
     <form className="register-form" onSubmit={(e) => handleSubmit(e)}>
-      <span className="register-title">SignIn</span>
-      <input
-        type="tel"
-        className="register-input tel"
-        placeholder="전화번호를 입력하세요."
-        required
-      />
-      <button
-        className="register-validation tel"
-        onClick={(e) => checkValidation(e)}
-      >
-        중복 확인
-      </button>
-      <input
-        className="register-input name"
-        placeholder="닉네임을 입력하세요."
-        required
-      />
-      <button
-        className="register-validation name"
-        onClick={(e) => checkValidation(e)}
-      >
-        중복 확인
-      </button>
-      <label className="register-container">
-        <span className="register-agreement">개인정보 제공 동의</span>
-        <input type="checkbox" className="register-checkbox" required />
-      </label>
-      <button type="submit" className="register-button">
-        OKAY
-      </button>
+      <div className="register-title">
+        회원가입
+        <button
+          className="register-close"
+          onClick={() => setRegisterPage(false)}
+        >
+          x
+        </button>
+      </div>
+
+      <div className="register-info">
+        <input
+          type="tel"
+          className="register-input"
+          placeholder="전화번호를 입력하세요."
+          required
+        />
+        <button
+          className="register-validation"
+          onClick={(e) => checkValidation(e)}
+        >
+          중복 확인
+        </button>
+      </div>
+
+      <div className="register-info">
+        <input
+          className="register-input"
+          placeholder="닉네임을 입력하세요."
+          required
+        />
+        <button
+          className="register-validation"
+          onClick={(e) => checkValidation(e)}
+        >
+          중복 확인
+        </button>
+      </div>
+
+      <div className="register-container">
+        <label>
+          <span className="register-agreement">개인정보 제공 동의</span>
+          <input type="checkbox" className="register-checkbox" required />
+        </label>
+      </div>
+
+      <div className="register-submit">
+        <button type="submit" className="register-button">
+          확인
+        </button>
+      </div>
     </form>
   );
 };

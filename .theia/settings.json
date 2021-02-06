@@ -1,8 +1,0 @@
-{
-    "python.pythonPath": "/bin/python3",
-    "python.formatting.autopep8Args": [
-        "--max-line-length",
-        "120",
-        "--experimental"
-    ]
-}

@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.conf import settings
 from pinha.models import Store, image_path
 import uuid
-from django.utils import timezone
+import datetime
 
 # Create your models here.
 
@@ -74,7 +74,11 @@ class FavList(models.Model):
 
 class RefreshToken(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, null=False, blank=False)
-    last_refreshed = models.DateTimeField(default=timezone.now, null=False, blank=False)
+    last_refreshed = models.DateTimeField(default=datetime.now, null=False, blank=False, name='Issued At (GMT)')
+    iat = models.PositiveBigIntegerField(default=0, null=False, blank=False, editable=False)
     user = models.ForeignKey(User, related_name='refresh_tokens', null=False, blank=False)
     device = models.CharField(max_length=100, null=True, blank=True)
     ip = models.GenericIPAddressField(unpack_ipv4=True, protocol='both')
+
+    def save(self, *args, **kwargs):
+        self.iat = int(self.last_refreshed.timestamp())

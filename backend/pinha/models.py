@@ -8,7 +8,7 @@ def image_path(instance, filename):
     ext = filename.split(".")[-1]
     id = str(uuid.uuid4())
     filename = f"{id[:2]}/{id[2:]}.{ext}"
-    return f"images/{filename}"
+    return f"pinha/{filename}"
 
 
 class PhoneAuth(models.Model):
@@ -64,8 +64,8 @@ class Review(models.Model):
     contents = models.TextField()
     stars = models.PositiveSmallIntegerField(null=False, blank=False)
     is_public = models.BooleanField(default=True, null=False, blank=False)
-    createdAt = models.DateTimeField(auto_now_add=True)
-    modifiedAt = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
     liked = models.PositiveSmallIntegerField(null=False, blank=False, default=0)
     disliked = models.PositiveSmallIntegerField(null=False, blank=False, default=0)
 

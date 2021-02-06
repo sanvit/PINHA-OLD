@@ -4,6 +4,7 @@ import PlaceList from "./PlaceList";
 
 const MainMenu = () => {
   const categories = ["양식", "중식", "한식", "일식", "분식", "디저트", "술집"];
+
   return (
     <div className="mainmenu">
       <ul className="mainmenu-categories">

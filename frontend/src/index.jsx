@@ -15,5 +15,6 @@ ReactDOM.render(
       <App />
     </RenderAfterNavermapsLoaded>
   </React.StrictMode>,
+
   document.getElementById("root")
 );

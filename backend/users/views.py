@@ -58,11 +58,10 @@ def getOTPCode(req):
 def login_with_phone(request):
     phone = request.GET["phone"]
     code = request.GET["code"]
-    user = User()
     if PhoneAuth.objects.filter(number=phone):
         auth = PhoneAuth.objects.get(number=phone)
         if auth.sent_time > timezone.now() - timedelta(seconds=60):
-            print(timezone.now() + timedelta(seconds=5))
+            # print(timezone.now() + timedelta(seconds=5))
             if auth.code == code:
                 return HttpResponse("Login Success")
             return HttpResponse("AuthKey did not match")

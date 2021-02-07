@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "components/Layout/Header.scss";
-import { useAppContext } from "stores/jwt-store";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { useAppContext } from "stores/jwt-store";
 import Login from "components/feature/Auth/Login";
 import Register from "components/feature/Auth/Register";
-import styled from "styled-components";
+import "components/Layout/Header.scss";
 
 const AuthPage = styled.div`
   position: absolute;
@@ -15,7 +15,7 @@ const AuthPage = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.5);
   overflow-y: hidden;
 `;

@@ -21,6 +21,7 @@ const Auth = () => {
       state: { view },
     },
   } = history;
+
   const [isLoginView, setIsLoginView] = useState(view === "login");
 
   useEffect(() => {

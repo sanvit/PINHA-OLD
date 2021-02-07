@@ -4,5 +4,5 @@ from . import views
 app_name = "pinha"
 
 urlpatterns = [
-    path("store/kakao/", views.KakaoStoreView.as_view()),
+    path("stores/kakao/", views.KakaoStoreView.as_view()),
 ]

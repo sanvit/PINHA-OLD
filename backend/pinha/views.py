@@ -36,10 +36,16 @@ class KakaoStoreView(APIView):
         except Exception:
             return None
 
-    def post(self, request):
+    def get(self, request):
+
+        """
+        api/v1/pinha/stores/kakao/?keyword=가메이
+        """
 
         # TODO if 유저가 맛집을 추가할 권리가 있을 때 인증 조건 추가
-        keyword = request.data.get("keyword")
+        keyword = request.query_params.get("keyword")
+        type = request.query_params.get("type")
+
         if not keyword:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -53,8 +59,8 @@ class KakaoStoreView(APIView):
             "radius": 1500,
         }
 
-        if request.POST.get("type"):
-            query["category_group_code"] = request.POST.get("type")
+        if type:
+            query["category_group_code"] = type
         else:
             query["category_group_code"] = "FD6"
 

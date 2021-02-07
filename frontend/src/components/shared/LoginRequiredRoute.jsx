@@ -18,7 +18,7 @@ const LoginRequiredRoute = ({ component: Component, ...kwargs }) => {
           return (
             <Redirect
               to={{
-                pathname: "/auth", // 이동할 경로
+                pathname: "/", // 이동할 경로
                 state: { from: props.location }, // 객체를 전달할 수 있다.
               }}
             />

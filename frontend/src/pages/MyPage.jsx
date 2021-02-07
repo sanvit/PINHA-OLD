@@ -1,14 +1,12 @@
 import React from "react";
-import "pages/MyPage.scss";
 import Layout from "components/Layout";
 import Profile from "components/feature/MyPage/Profile";
 import Menu from "components/feature/MyPage/Menu";
 import MyContent from "components/feature/MyPage/MyContent";
-//import LoginRequiredRoute from "components/shared/LoginRequiredRoute";
+import "pages/MyPage.scss";
 
 const MyPage = () => {
   return (
-    //<LoginRequiredRoute>
     <Layout>
       <div className="mypage">
         <div className="mypage-sidebar">
@@ -20,7 +18,6 @@ const MyPage = () => {
         </div>
       </div>
     </Layout>
-    //</LoginRequiredRoute>
   );
 };
 

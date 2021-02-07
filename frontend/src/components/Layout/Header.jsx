@@ -50,7 +50,7 @@ const Header = () => {
 
   const goToMyPage = () => {
     history.push({
-      pathname: "MyPage",
+      pathname: "mypage",
       state: "mypage",
     });
   };
@@ -76,14 +76,14 @@ const Header = () => {
             <button
               name="login"
               className="header-button loginBtn"
-              onClick={(e) => showPage(e)}
+              onClick={(event) => showPage(event)}
             >
               로그인
             </button>
             <button
               name="register"
               className="header-button registerBtn"
-              onClick={(e) => showPage(e)}
+              onClick={(event) => showPage(event)}
             >
               회원가입
             </button>

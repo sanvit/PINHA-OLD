@@ -49,7 +49,7 @@ const reducer = (prevState, action) => {
 
 // Provider
 export const AppProvider = ({ children }) => {
-  const jwtToken = getStorageItem(STORAGE_KEY, "");
+  const jwtToken = getStorageItem(STORAGE_KEY, "X-JWT");
 
   const initialState = {
     jwtToken,

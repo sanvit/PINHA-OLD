@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 import jwt
 from random import randint
 from datetime import timedelta
@@ -9,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response  # 리턴 모두 이걸로 하면 좋아요!
 from pinha.models import PhoneAuth
 from .models import User
+from .jwt import generateAccessToken, generateRefreshToken
 
 
 def getOTPCode(req):
@@ -67,12 +69,14 @@ def login_with_phone(request):
         return HttpResponse("Code Expired")
     return HttpResponse("No Code Found")
 
-
-from django.contrib.auth import authenticate
-
+class PhoneAuthKey(APIView):
+    def post(self, request):
+        phone = request.data.get("phone")
+        
 
 class Login(APIView):
     def post(self, request):
+        """
         username = request.data.get("username")  # 여기서 username는 번호
         password = request.data.get("password")
         if not username and password:
@@ -85,3 +89,10 @@ class Login(APIView):
             return Response(data={"token": encoded_jwt})
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+        """
+        phone = request.data.get("phone")
+        
+
+class Refresh(APIView):
+    def post(self, request):
+        pass

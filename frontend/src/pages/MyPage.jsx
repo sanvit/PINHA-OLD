@@ -1,14 +1,17 @@
-import React from "react";
-import "pages/MyPage.scss";
+import React, { useEffect } from "react";
 import Layout from "components/Layout";
 import Profile from "components/feature/MyPage/Profile";
 import Menu from "components/feature/MyPage/Menu";
 import MyContent from "components/feature/MyPage/MyContent";
-//import LoginRequiredRoute from "components/shared/LoginRequiredRoute";
+import useWindowWidth from "../hooks/useWindowWidth";
+import "pages/MyPage.scss";
 
 const MyPage = () => {
+  const width = useWindowWidth();
+
+  console.log(width);
+
   return (
-    //<LoginRequiredRoute>
     <Layout>
       <div className="mypage">
         <div className="mypage-sidebar">
@@ -20,7 +23,6 @@ const MyPage = () => {
         </div>
       </div>
     </Layout>
-    //</LoginRequiredRoute>
   );
 };
 

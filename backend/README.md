@@ -28,3 +28,16 @@
 - []
 - []
 - []
+
+<br>
+
+---
+
+<br>
+
+## API
+
+### Kakao API
+
+- `api/v1/pinha/stores/kakao/?keyword=가메이` GET
+-
